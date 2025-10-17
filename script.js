@@ -1,58 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.section');
   const navbarHeight = document.querySelector('.navbar').offsetHeight;
-  const extraOffset = -40; // adjust this value to move sections slightly higher
+  const extraOffset = -40;
   let currentSection = 0;
   let isScrolling = false;
 
-  // Set initial section as active
-  sections[currentSection].classList.add('active');
+  
+  function isDesktop() {
+    return window.innerWidth > 768; 
+  }
 
-  // Handle scroll (wheel)
-  document.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    if (isScrolling) return;
+  if (isDesktop()) {
 
-    isScrolling = true;
+    sections[currentSection].classList.add('active');
 
-    if (e.deltaY > 0 && currentSection < sections.length - 1) {
-      currentSection++;
-    } else if (e.deltaY < 0 && currentSection > 0) {
-      currentSection--;
-    }
+    document.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (isScrolling) return;
 
-    scrollToSection(currentSection);
-  }, { passive: false });
+      isScrolling = true;
 
-  // Function: smooth scroll with offset
+      if (e.deltaY > 0 && currentSection < sections.length - 1) {
+        currentSection++;
+      } else if (e.deltaY < 0 && currentSection > 0) {
+        currentSection--;
+      }
+
+      scrollToSection(currentSection);
+    }, { passive: false });
+  }
+
   function scrollToSection(index) {
-    const targetPosition = sections[index].offsetTop - navbarHeight - extraOffset; 
+    const targetPosition = sections[index].offsetTop - navbarHeight - extraOffset;
     window.scrollTo({
       top: targetPosition,
       behavior: 'smooth'
     });
-
     sections.forEach((sec, i) => sec.classList.toggle('active', i === index));
-
     setTimeout(() => {
       isScrolling = false;
     }, 1000);
   }
 
-  // Navbar & Button smooth click
+
   document.querySelectorAll('.nav-link, .btn-custom').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
-        const targetIndex = [...sections].indexOf(target);
-        if (targetIndex !== -1) {
-          currentSection = targetIndex;
-          scrollToSection(currentSection);
-        } else {
-          const targetPos = target.offsetTop - navbarHeight - extraOffset;
-          window.scrollTo({ top: targetPos, behavior: 'smooth' });
-        }
+        const targetPos = target.offsetTop - navbarHeight - extraOffset;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
       }
     });
   });

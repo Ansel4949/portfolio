@@ -8,7 +8,7 @@ body {
   
 }
 
-/* Navbar */
+
 .navbar {
   background-color: #1A2037;
 }
@@ -22,7 +22,7 @@ body {
   color: #3A9704 !important;
 }
 
-/* Section layout */
+
 .section {
   height: 100vh;
   padding-top: 80px;
@@ -36,13 +36,13 @@ body {
   
 }
 
-/* Active section animation */
+
 .section.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Profile image */
+
 .profile-img {
   width: 150px;
   height: 150px;
@@ -51,12 +51,12 @@ body {
   border: 3px solid #3A9704;
 }
 
-/* Text colors */
+
 h1 span {
   color: #3A9704;
 }
 
-/* Button styling */
+
 .btn-custom {
   background-color: #3A9704;
   color: white;
@@ -68,7 +68,7 @@ h1 span {
   background-color: #327e04;
 }
 
-/* Footer */
+
 footer {
   text-align: center;
   padding: 20px;
@@ -82,7 +82,7 @@ footer {
   color: #3A9704;
   transform: scale(1.2);
 }
-/* Skills Section */
+
 #skills {
   background-color: #1A2037;
   color: white;
@@ -109,21 +109,7 @@ footer {
   justify-content: center;
   align-items: center;
 }
-#projects {
-  background-color: #1A2037;
-  padding: 60px 0;
-}
 
-#projects .card {
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#projects .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(58, 151, 4, 0.3);
-}
 
 .btn-custom {
   background-color: #3A9704;
@@ -144,17 +130,17 @@ footer {
 
 
 
-/* Base styles already applied here... */
 
-/* ===== Responsive Adjustments ===== */
+
+
 @media (max-width: 991px) {
-  /* Reduce section heights and padding */
+  
   .section {
-    min-height: auto; /* allow sections to shrink */
+    min-height: auto; 
     padding: 80px 20px;
   }
 
-  /* About & Project text adjustments */
+  
   #about .container p,
   #projects .card-body p {
     font-size: 0.9rem;
@@ -166,33 +152,35 @@ footer {
     font-size: 1.6rem;
   }
 
-  #projects .card {
-    max-width: 100%;
-  }
-
   #projects .row.g-3 {
-    row-gap: 15px;
-    column-gap: 10px;
+    flex-direction: column;
+    align-items: center;
   }
 
   #projects .col-md-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 80%;
+    max-width: 80%;
   }
 
-  /* Profile image smaller */
+  #projects img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+  }
+
+  
   .profile-img {
     width: 120px;
     height: 120px;
   }
 
-  /* Button size adjustments */
+
   .btn-custom {
     padding: 8px 18px;
     font-size: 0.9rem;
   }
 
-  /* Navbar links smaller */
+  
   .navbar-nav .nav-link {
     font-size: 0.9rem;
     padding: 0.5rem 0.75rem;
@@ -200,7 +188,7 @@ footer {
 }
 
 @media (max-width: 576px) {
-  /* Further shrink for mobile */
+ 
   #about h2,
   #projects h2,
   #skills h2,
@@ -228,7 +216,7 @@ footer {
     font-size: 0.85rem;
   }
 
-  /* Adjust card images */
+
   #projects .card-body .row img {
     max-height: 150px;
     object-fit: cover;
@@ -239,7 +227,7 @@ footer {
   }
 }
 
-/* Optional: adjust navbar height on mobile */
+
 @media (max-width: 768px) {
   .navbar {
     padding: 0.5rem 1rem;

@@ -1,0 +1,247 @@
+body {
+  background-color: #1A2037;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1A2037;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #3A9704 !important;
+}
+
+/* Section layout */
+.section {
+  height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  
+}
+
+/* Active section animation */
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Profile image */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3A9704;
+}
+
+/* Text colors */
+h1 span {
+  color: #3A9704;
+}
+
+/* Button styling */
+.btn-custom {
+  background-color: #3A9704;
+  color: white;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #327e04;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #14182b;
+}
+.contact-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icon:hover {
+  color: #3A9704;
+  transform: scale(1.2);
+}
+/* Skills Section */
+#skills {
+  background-color: #1A2037;
+  color: white;
+  padding: 60px 0;
+}
+
+.skill-box {
+  background-color: #3A9704;
+  color: white;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(58, 151, 4, 0.4);
+}
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#projects {
+  background-color: #1A2037;
+  padding: 60px 0;
+}
+
+#projects .card {
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projects .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(58, 151, 4, 0.3);
+}
+
+.btn-custom {
+  background-color: #3A9704;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 25px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #326E03;
+  color: #fff;
+}
+
+
+
+
+
+
+/* Base styles already applied here... */
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 991px) {
+  /* Reduce section heights and padding */
+  .section {
+    min-height: auto; /* allow sections to shrink */
+    padding: 80px 20px;
+  }
+
+  /* About & Project text adjustments */
+  #about .container p,
+  #projects .card-body p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  #about h2,
+  #projects h2 {
+    font-size: 1.6rem;
+  }
+
+  #projects .card {
+    max-width: 100%;
+  }
+
+  #projects .row.g-3 {
+    row-gap: 15px;
+    column-gap: 10px;
+  }
+
+  #projects .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Profile image smaller */
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Button size adjustments */
+  .btn-custom {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* Navbar links smaller */
+  .navbar-nav .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Further shrink for mobile */
+  #about h2,
+  #projects h2,
+  #skills h2,
+  #contact h2 {
+    font-size: 1.4rem;
+  }
+
+  #about .container p,
+  #projects .card-body p {
+    font-size: 0.85rem;
+  }
+
+  .skill-box {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .btn-custom {
+    padding: 6px 15px;
+    font-size: 0.85rem;
+  }
+
+  /* Adjust card images */
+  #projects .card-body .row img {
+    max-height: 150px;
+    object-fit: cover;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Optional: adjust navbar height on mobile */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+}

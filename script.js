@@ -1,17 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.section');
-  const navbarHeight = document.querySelector('.navbar').offsetHeight;
+  const navbar = document.querySelector('.navbar');
+  const navbarHeight = navbar ? navbar.offsetHeight : 0;
   const extraOffset = -40;
   let currentSection = 0;
   let isScrolling = false;
 
-  
   function isDesktop() {
-    return window.innerWidth > 768; 
+    return window.innerWidth > 768;
   }
 
-  if (isDesktop()) {
+  function scrollToSection(index) {
+    const targetPosition = sections[index].offsetTop - navbarHeight - extraOffset;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+    sections.forEach((sec, i) => sec.classList.toggle('active', i === index));
+    setTimeout(() => {
+      isScrolling = false;
+    }, 800);
+  }
 
+  // Desktop-only section scroll
+  if (isDesktop()) {
     sections[currentSection].classList.add('active');
 
     document.addEventListener('wheel', (e) => {
@@ -30,19 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: false });
   }
 
-  function scrollToSection(index) {
-    const targetPosition = sections[index].offsetTop - navbarHeight - extraOffset;
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-    sections.forEach((sec, i) => sec.classList.toggle('active', i === index));
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }
+  // Normal behavior for mobile — no preventDefault
+  window.addEventListener('resize', () => {
+    if (!isDesktop()) {
+      document.removeEventListener('wheel', () => {}); // disable custom scroll
+      document.body.style.overflow = 'auto'; // ensure scrolling is restored
+    }
+  });
 
-
+  // Smooth scroll for nav links (both desktop & mobile)
   document.querySelectorAll('.nav-link, .btn-custom').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
